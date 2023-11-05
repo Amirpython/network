@@ -1,11 +1,10 @@
 package com.example.network;
 
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.IntentFilter;
-import android.os.Build;
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
     MyReceiver myReceiver;
@@ -18,11 +17,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            myReceiver = new MyReceiver();
-            registerReceiver(myReceiver,
-                    new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE"));
-        }
+        myReceiver = new MyReceiver();
+        registerReceiver(myReceiver,
+                new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE"));
         super.onResume();
     }
 
